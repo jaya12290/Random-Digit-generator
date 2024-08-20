@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Digit Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0f7fa; /* Light cyan background */
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff; /* White background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            margin: 10px;
+            font-size: 16px;
+            border: 2px solid #007bff; /* Blue border */
+            border-radius: 5px;
+            background-color: #f0f8ff; /* Light blue background for input fields */
+            color: #333333; /* Dark grey text */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff; /* Blue background for button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #00796b; /* Teal text color */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 style="color: #00796b;">Random Digit Generator</h1> <!-- Teal color for the title -->
+    <input type="number" id="minValue" placeholder="Min" required>
+    <input type="number" id="maxValue" placeholder="Max" required>
+    <br>
+    <button onclick="generateRandomNumber()">Generate</button>
+    <div id="result">Random Number: </div>
+</div>
+
+<script>
+    function generateRandomNumber() {
+        const min = parseInt(document.getElementById('minValue').value);
+        const max = parseInt(document.getElementById('maxValue').value);
+
+        if (isNaN(min) || isNaN(max) || min > max) {
+            document.getElementById('result').textContent = 'Please enter valid numbers!';
+            document.getElementById('result').style.color = 'red'; /* Red color for error message */
+        } else {
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            document.getElementById('result').textContent = 'Random Number: ' + randomNumber;
+            document.getElementById('result').style.color = '#00796b'; /* Teal color for the result */
+        }
+    }
+</script>
+
+</body>
+</html>
